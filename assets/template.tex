@@ -1,0 +1,72 @@
+% helpsheet template: A4 landscape, 4 columns, 2 pages, \footnotesize.
+% Self-contained: needs only standard TeX Live packages.
+% Edit ONLY between "CONTENT START" and "CONTENT END", plus the 3 title fields.
+\documentclass[10pt, landscape]{article}
+\usepackage[a4paper,margin=3mm,landscape]{geometry}
+\usepackage[scaled=0.92]{helvet}
+\usepackage{calc,multicol,amsmath,amsthm,amsfonts,amssymb,bm,mathtools}
+\usepackage[table]{xcolor}
+\usepackage{graphicx,enumitem}
+\IfFileExists{newtxtext.sty}{\usepackage{newtxtext}}{}% optional font; safe to skip
+\usepackage[hidelinks]{hyperref}
+\setlist{nosep}
+\pagestyle{empty}
+
+% ---- tight section headings
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}{-1ex plus -.5ex minus -.2ex}{0.5ex plus .2ex}{\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}{-1ex plus -.5ex minus -.2ex}{0.5ex plus .2ex}{\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}{-1ex plus -.5ex minus -.2ex}{1ex plus .2ex}{\normalfont\small\bfseries}}
+\makeatother
+\renewcommand{\familydefault}{\sfdefault}
+\renewcommand{\rmdefault}{\sfdefault}
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+\setlist[itemize,1]{leftmargin=2mm,labelindent=1mm,labelsep=1mm}
+\setlist[itemize,2]{leftmargin=4mm,labelindent=1mm,labelsep=1mm}
+\renewcommand\labelitemii{\textbullet}
+\renewcommand\labelitemiii{\textbullet}
+
+% ---- blue math
+\definecolor{mathblue}{cmyk}{1,.72,0,.38}
+\everymath\expandafter{\the\everymath \color{mathblue}}
+
+% ---- helper macros (inlined: no external files)
+\newcommand{\dx}{\,dx}\newcommand{\dy}{\,dy}
+\newcommand{\cov}{\mathop{\mathrm{cov}}}
+\newcommand{\var}{\mathop{\mathrm{var}}}
+\newcommand{\xbar}{\bar{x}}\newcommand{\Xbar}{\bar{X}}
+\newcommand{\seq}[2][n]{#2_1, \dots, #2_{#1}}
+\newcommand{\definition}[2][]{\textbf{#2}\ifx&#1&\else\ (#1)\fi}   % \definition[of X]{term}
+\newcommand{\ildefinition}[1]{\textbf{\textit{#1}}}                 % inline term
+\newcommand{\code}[1]{\texttt{#1}}
+\newenvironment{tightcenter}{\par\vspace{0.2ex}\begingroup\centering}{\par\endgroup\vspace{0.2ex}}
+
+\begin{document}
+\raggedright
+\footnotesize   % do NOT go smaller: cut content instead
+\begin{multicols*}{4}
+  \setlength{\columnseprule}{0.25pt}
+
+  % ---- title box (fill the 3 fields)
+  \begin{center}\fbox{\parbox{0.8\linewidth}{\centering
+    {\Large\textbf{COURSE CODE}}\\ \normalsize{TERM / YEAR}\\
+    {\footnotesize\textcolor{gray}{AUTHOR}}}}\end{center}
+
+  % === CONTENT START ===
+  \section{01. TOPIC NAME}
+  \begin{itemize}
+    \item \definition[of a thing]{term}: short definition
+    \item key fact, one idea per line
+      \begin{itemize}
+        \item sub-point (max 2 levels)
+      \end{itemize}
+  \end{itemize}
+  \begin{tightcenter}
+    $E(X) = \sum_i x_i p_i$
+  \end{tightcenter}
+  % === CONTENT END ===
+
+\end{multicols*}
+\end{document}
